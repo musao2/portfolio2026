@@ -36,7 +36,7 @@ const Header = () => {
           
           <div className="flex-1">
             <a href="#" onClick={(e) => scrollToSection(e, 'hero')} className="font-bold text-xl tracking-tighter cursor-none hover-target">
-              M<span className="text-white">S.</span>
+              Mu<span className="text-white">sa.</span>
             </a>
           </div>
 
