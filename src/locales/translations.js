@@ -8,7 +8,7 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      location: "Based in Uzbekistan • 2026",
+      location: "Based in Uzbekistan, Samarkand, Urgut • 2026",
       name: "Muhammadsodiq",
       role: "Frontend Developer",
       description: "I build digital experiences that turn ideas into interfaces. Specialized in crafting premium, interactive, and functional web applications.",
@@ -25,9 +25,9 @@ export const translations = {
         focus: "Focus",
         focusValue: "UI Engineering, Interactive Design, Performance",
         location: "Location",
-        locationValue: "Uzbekistan",
+        locationValue: "Uzbekistan, Samarkand, Urgut",
         experience: "Experience",
-        experienceValue: "Senior",
+        experienceValue: "Middle",
         status: "Status",
         statusValue: "Open"
       }
@@ -135,7 +135,7 @@ export const translations = {
       contact: "Aloqa"
     },
     hero: {
-      location: "O'zbekistonda joylashgan • 2026",
+      location: "O'zbekiston, Samarqand, Urgutda joylashgan • 2026",
       name: "Muhammadsodiq",
       role: "Frontend Dasturchi",
       description: "G'oyalarni interfeyslarga aylantiruvchi raqamli tajribalar yarataman. Premium, interaktiv va mukammal ishlovchi veb ilovalar tuzishga ixtisoslashganman.",
@@ -152,9 +152,9 @@ export const translations = {
         focus: "Yo'nalish",
         focusValue: "UI Muhandislik, Interaktiv Dizayn, Tezlik",
         location: "Manzil",
-        locationValue: "O'zbekiston",
+        locationValue: "O'zbekiston, Samarqand, Urgut",
         experience: "Tajriba",
-        experienceValue: "Senior",
+        experienceValue: "Middle",
         status: "Holat",
         statusValue: "Ochiq"
       }
