@@ -1,71 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const playLightningZap = () => {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-
-    // Charging Whoosh sound (0 to 1.2s)
-    const osc1 = ctx.createOscillator();
-    const gain1 = ctx.createGain();
-    osc1.type = 'sine';
-    osc1.frequency.setValueAtTime(50, ctx.currentTime);
-    osc1.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 1.2);
-    gain1.gain.setValueAtTime(0, ctx.currentTime);
-    gain1.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 1.2);
-    
-    osc1.connect(gain1);
-    gain1.connect(ctx.destination);
-    osc1.start();
-    osc1.stop(ctx.currentTime + 1.2);
-
-    // Lightning Strike / Zap (at 1.2s)
-    setTimeout(() => {
-      if (ctx.state === 'suspended') ctx.resume();
-      
-      const bufferSize = ctx.sampleRate * 2; 
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = Math.random() * 2 - 1;
-      }
-      const noise = ctx.createBufferSource();
-      noise.buffer = buffer;
-      
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(1000, ctx.currentTime);
-      filter.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 1.5);
-      
-      const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(1, ctx.currentTime);
-      noiseGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
-      
-      noise.connect(filter);
-      filter.connect(noiseGain);
-      noiseGain.connect(ctx.destination);
-      noise.start();
-      
-      const osc2 = ctx.createOscillator();
-      const gain2 = ctx.createGain();
-      osc2.type = 'sawtooth';
-      osc2.frequency.setValueAtTime(1200, ctx.currentTime);
-      osc2.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 0.4);
-      gain2.gain.setValueAtTime(0.6, ctx.currentTime);
-      gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
-      
-      osc2.connect(gain2);
-      gain2.connect(ctx.destination);
-      osc2.start();
-      osc2.stop(ctx.currentTime + 0.4);
-    }, 1200);
-  } catch (err) {
-    console.log("Audio play blocked or not supported:", err);
-  }
-};
-
 const getExitAnimation = (index) => {
   // 4 directions: top-left, top-right, bottom-left, bottom-right
   const dirs = [
@@ -81,7 +16,7 @@ const Loader = ({ onLoadingComplete }) => {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    playLightningZap();
+
     
     // Trigger the exit animation at 4 seconds
     const exitTimer = setTimeout(() => {
