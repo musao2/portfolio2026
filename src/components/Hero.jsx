@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import MusicPlayer from './MusicPlayer';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -68,11 +69,15 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] pointer-events-none opacity-20"
+        className="relative md:absolute self-center md:self-auto mt-12 md:mt-0 right-0 md:top-1/2 md:-translate-y-1/2 w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[500px] md:h-[500px] pointer-events-none"
       >
-        <div className="w-full h-full border border-white/10 rounded-full absolute top-0 left-0 animate-[spin_20s_linear_infinite]" />
-        <div className="w-4/5 h-4/5 border border-accent/20 rounded-full absolute top-[10%] left-[10%] animate-[spin_15s_linear_infinite_reverse]" />
-        <div className="w-3/5 h-3/5 border border-white/5 rounded-full absolute top-[20%] left-[20%] animate-[spin_10s_linear_infinite]" />
+        <div className="w-full h-full border border-white/10 rounded-full absolute top-0 left-0 animate-[spin_20s_linear_infinite] opacity-20" />
+        <div className="w-4/5 h-4/5 border border-accent/20 rounded-full absolute top-[10%] left-[10%] animate-[spin_15s_linear_infinite_reverse] opacity-20" />
+        <div className="w-3/5 h-3/5 border border-white/5 rounded-full absolute top-[20%] left-[20%] animate-[spin_10s_linear_infinite] opacity-20" />
+        
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-20">
+          <MusicPlayer />
+        </div>
       </motion.div>
     </section>
   );
