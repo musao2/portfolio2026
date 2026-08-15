@@ -29,9 +29,9 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 pointer-events-none ${scrolled ? 'py-3 bg-background/80 backdrop-blur-md border-b border-white/10 shadow-lg' : 'py-6 bg-transparent'} text-white`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 pointer-events-none px-6 md:px-12 lg:px-24 ${scrolled ? 'py-3 bg-background/80 backdrop-blur-md border-b border-white/10 shadow-lg' : 'py-6 bg-transparent'} text-white`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto w-full">
         <div className="flex items-center justify-between py-3 pointer-events-auto">
           
           <div className="flex-1">
