@@ -16,45 +16,15 @@ import Loader from './components/Loader';
 function App() {
   const [isMounted, setIsMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const audioRef = useRef(null);
 
   useEffect(() => {
     setIsMounted(true);
-    
-    // Attempt autoplay immediately
-    const attemptPlay = () => {
-      if (audioRef.current) {
-        audioRef.current.play().catch(() => {
-          console.log("Autoplay blocked by browser. Waiting for interaction...");
-        });
-      }
-    };
-    
-    attemptPlay();
-
-    // Force play on first user interaction (click, touch) to bypass browser policy
-    const forcePlayOnInteract = () => {
-      if (audioRef.current && audioRef.current.paused) {
-        audioRef.current.play().catch(e => console.log(e));
-      }
-      document.removeEventListener('click', forcePlayOnInteract);
-      document.removeEventListener('touchstart', forcePlayOnInteract);
-    };
-
-    document.addEventListener('click', forcePlayOnInteract);
-    document.addEventListener('touchstart', forcePlayOnInteract);
-
-    return () => {
-      document.removeEventListener('click', forcePlayOnInteract);
-      document.removeEventListener('touchstart', forcePlayOnInteract);
-    };
   }, []);
 
   if (!isMounted) return <div className="bg-background min-h-screen"></div>;
 
   return (
     <LanguageProvider>
-      <audio ref={audioRef} loop src="/classical.mp3" preload="auto" />
       {isLoading && <Loader onLoadingComplete={() => setIsLoading(false)} />}
       
       {!isLoading && (
