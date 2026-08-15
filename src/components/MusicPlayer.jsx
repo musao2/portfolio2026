@@ -19,6 +19,18 @@ const MusicPlayer = () => {
       }).catch(error => {
         console.log('Autoplay prevented by browser:', error);
         setIsPlaying(false); // Browser blocked autoplay, requires user interaction
+        
+        // Force play on first user interaction anywhere on the page
+        const forcePlay = () => {
+          if (audioRef.current && audioRef.current.paused) {
+            audioRef.current.play().then(() => setIsPlaying(true)).catch(e => console.log(e));
+          }
+          document.removeEventListener('click', forcePlay);
+          document.removeEventListener('touchstart', forcePlay);
+        };
+        
+        document.addEventListener('click', forcePlay);
+        document.addEventListener('touchstart', forcePlay);
       });
     }
 
